@@ -2,6 +2,6 @@ services:
   dev:
     image: "swiftlang/swift:nightly-focal"
     volumes:
-      - C:\Users\24529\Documents\CS561\Week3:/code-client
+      - C:\Users\24529\Documents\CS561\CS561_NEW:/code-client
     environment:
       - USER=Yumeng

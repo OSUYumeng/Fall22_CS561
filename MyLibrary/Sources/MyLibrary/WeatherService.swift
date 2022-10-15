@@ -4,6 +4,11 @@ public protocol WeatherService {
     func getTemperature() async throws -> Int
 }
 
+enum BaseUrl : String{
+
+    case mockServer = "https://http://localhost:3000/data/2.5/weather"
+}
+
 class WeatherServiceImpl: WeatherService {
     let url = "https://api.openweathermap.org/data/2.5/weather?q=corvallis&units=imperial&appid=<INSERT YOUR API KEY HERE>"
 
@@ -24,7 +29,7 @@ class WeatherServiceImpl: WeatherService {
     }
 }
 
-public struct Weather: Decodable {
+private struct Weather: Decodable {
     let main: Main
 
     struct Main: Decodable {
