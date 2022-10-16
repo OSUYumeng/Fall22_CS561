@@ -76,7 +76,7 @@ final class MyLibraryTests: XCTestCase {
     }
 
     func testWeatherDataModel() throws {
-        
+
         if let pathString = Bundle.module.url(forResource: "data", withExtension: ".json"){
             var realTest: Weather!
             let data = try! Data(contentsOf: pathString)
