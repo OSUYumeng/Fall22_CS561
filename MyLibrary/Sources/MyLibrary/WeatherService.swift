@@ -6,13 +6,18 @@ public protocol WeatherService {
 
 enum BaseUrl : String{
 
+    case ServerLink = "https://api.openweathermap.org/data/2.5/weather"
     case mockServer = "https://http://localhost:3000/data/2.5/weather"
 }
 
+//?q=corvallis&units=imperial&appid=add08dbd22c529bbf7d66da376b34822
+
 class WeatherServiceImpl: WeatherService {
-    let url = "https://api.openweathermap.org/data/2.5/weather?q=corvallis&units=imperial&appid=add08dbd22c529bbf7d66da376b34822"
+    
+    let myCase = BaseUrl.ServerLink.rawValue
 
     func getTemperature() async throws -> Int {
+        
         return try await withCheckedThrowingContinuation { continuation in
             AF.request(url, method: .get).validate(statusCode: 200..<300).responseDecodable(of: Weather.self) { response in
                 switch response.result {
